@@ -8,15 +8,19 @@ def get_weather(city, api_key):
         data = response.json()
         main = data.get('main', {})
         weather = data.get('weather', [{}])[0]
+        temp = main.get('temp', 'N/A')
+        humidity = main.get('humidity', 'N/A')
+        description = weather.get('description', 'N/A')
         print(f"Weather in {city}:")
-        print(f"Temperature: {main.get('temp', 'N/A')}°C")
-        print(f"Description: {weather.get('description', 'N/A')}")
+        print(f"Temperature: {temp}°C")
+        print(f"Humidity: {humidity}%")
+        print(f"Condition: {description}")
     else:
         print("Failed to fetch weather data. Check city name or API key.")
 
 def main():
     city = input("Enter city name: ")
-    api_key = "e5dc98f0036a899b908d22f2046a06c1"  # Replace with your actual API key or set as environment variable
+    api_key = "e5dc98f0036a899b908d22f2046a06c1"
     if not api_key:
         print("Error: Please set the OPENWEATHER_API_KEY environment variable.")
         return
