@@ -1,4 +1,3 @@
-# Fetch weather data from OpenWeatherMap API
 import os
 import requests
 
@@ -19,8 +18,7 @@ def get_weather(city, api_key):
     else:
         print("Failed to fetch weather data. Check city name or API key.")
 
-def main():
-    city = input("Enter city name: ")
+def main(city):
     api_key = "e5dc98f0036a899b908d22f2046a06c1"
     if not api_key:
         print("Error: Please set the OPENWEATHER_API_KEY environment variable.")
@@ -28,4 +26,8 @@ def main():
     get_weather(city, api_key)
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if len(sys.argv) != 2:
+        print("Usage: python weather_script.py <city>")
+    else:
+        main(sys.argv[1])
