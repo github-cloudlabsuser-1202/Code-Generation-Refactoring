@@ -1,3 +1,4 @@
+# Fetch weather data from OpenWeatherMap API
 import os
 import requests
 
